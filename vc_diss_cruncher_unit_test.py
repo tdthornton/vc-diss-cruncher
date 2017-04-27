@@ -28,7 +28,7 @@ class AuthTests(unittest.TestCase):
 class GetInputTests(unittest.TestCase):
 
     def testGetInput(self):
-        access_token = get_access_token(service_catalogue['ops'], "test2", "pass", "cruncher1")
+        access_token = get_access_token(service_catalogue['ops'], "test3", "pass", "cruncher1")
         new_input_response = get_input(service_catalogue['work-out'], access_token).read()
         self.assertIsNotNone(new_input_response)
 

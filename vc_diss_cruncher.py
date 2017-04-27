@@ -12,7 +12,6 @@ from subprocess import call
 
 #The first step: authenticate. Send credentials to the server.
 #The server returns to us a token to store and use to authorise all further calls for two hours
-import datetime
 
 
 def get_access_token(opsurl, user, password, crunchername):
@@ -143,14 +142,15 @@ def main():
     print_with_details('Welcome to vc-diss. Thank you for crunching with us today.')
     print_with_details('You can check your cruncher fleet, and pause it, at https://vc-diss.appspot.com')
     print_with_details('')
+    print_with_details('')
+    print_with_details('')
 
     if user is None or password is None or crunchername is None:
         print_with_details('Error: Invalid inputs.')
     else:
 
         print_with_details('Getting vc-diss service catalogue from the server.')
-        # service_catalogue_url="https://vc-diss.appspot.com/serviceCatalogue"
-        service_catalogue_url="http://localhost:8080/serviceCatalogue"
+        service_catalogue_url="https://vc-diss.appspot.com/serviceCatalogue"
 
         service_catalogue = json.loads(urllib2.urlopen(service_catalogue_url).read())
 
