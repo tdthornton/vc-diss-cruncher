@@ -68,6 +68,11 @@ class IntegrationTests(unittest.TestCase):
     def testBasicRun(self):
         #Test that does one whole "auth-get input-get code-validate-crunch-post result" loop
 
+        service_catalogue_url = "https://vc-diss.appspot.com/servicecatalogue"
+        # service_catalogue_url = "http://localhost:8080/servicecatalogue"
+
+        service_catalogue = json.loads(urllib2.urlopen(service_catalogue_url).read())
+
         access_token = get_access_token(service_catalogue['ops'], "test2", "pass", "cruncher2")
         self.assertIsNotNone(access_token)
 
@@ -100,7 +105,8 @@ class IntegrationTests(unittest.TestCase):
                 get_code(service_catalogue['work-out'], code_hash, access_token)
 
 
-service_catalogue_url = "http://localhost:8080/serviceCatalogue"
+# service_catalogue_url = "https://vc-diss.appspot.com/servicecatalogue"
+service_catalogue_url = "http://localhost:8080/servicecatalogue"
 
 service_catalogue = json.loads(urllib2.urlopen(service_catalogue_url).read())
 

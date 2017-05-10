@@ -144,13 +144,14 @@ def main():
     print_with_details('')
     print_with_details('')
     print_with_details('')
+    print_with_details('')
 
     if user is None or password is None or crunchername is None:
         print_with_details('Error: Invalid inputs.')
     else:
 
         print_with_details('Getting vc-diss service catalogue from the server.')
-        service_catalogue_url="https://vc-diss.appspot.com/serviceCatalogue"
+        service_catalogue_url="https://vc-diss.appspot.com/servicecatalogue"
 
         service_catalogue = json.loads(urllib2.urlopen(service_catalogue_url).read())
 
