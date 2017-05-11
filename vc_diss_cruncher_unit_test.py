@@ -5,11 +5,11 @@ from vc_diss_cruncher import *
 class AuthTests(unittest.TestCase):
 
     def testGoodAuth(self):
-        token = get_access_token(service_catalogue['ops'], "test1", "pass", "cruncher1")
+        token = get_access_token(service_catalogue['ops'], "test1", "t3heqaNa", "cruncher1")
         self.assertIsNotNone(token)
 
     def testBadAuth(self):
-        token = get_access_token(service_catalogue['ops'], "**", "pass", "cruncher1")
+        token = get_access_token(service_catalogue['ops'], "**", "t3heqaNa", "cruncher1")
         self.assertIsNone(token)
 
     def testBadPass(self):
@@ -21,14 +21,14 @@ class AuthTests(unittest.TestCase):
         token = get_access_token(service_catalogue['ops'], "test1", "**", "cruncher1")#invalid
         token = get_access_token(service_catalogue['ops'], "test1", "**", "cruncher1")#invalid
 
-        token = get_access_token(service_catalogue['ops'], "test1", "pass", "cruncher1")  #valid: locked by now
+        token = get_access_token(service_catalogue['ops'], "test1", "t3heqaNa", "cruncher1")  #valid: locked by now
 
         self.assertIsNone(token)
 
 class GetInputTests(unittest.TestCase):
 
     def testGetInput(self):
-        access_token = get_access_token(service_catalogue['ops'], "test3", "pass", "cruncher1")
+        access_token = get_access_token(service_catalogue['ops'], "test3", "t3heqaNa", "cruncher1")
         new_input_response = get_input(service_catalogue['work-out'], access_token).read()
         self.assertIsNotNone(new_input_response)
 
@@ -73,7 +73,7 @@ class IntegrationTests(unittest.TestCase):
 
         service_catalogue = json.loads(urllib2.urlopen(service_catalogue_url).read())
 
-        access_token = get_access_token(service_catalogue['ops'], "test2", "pass", "cruncher2")
+        access_token = get_access_token(service_catalogue['ops'], "test2", "t3heqaNa", "cruncher2")
         self.assertIsNotNone(access_token)
 
 
@@ -105,8 +105,8 @@ class IntegrationTests(unittest.TestCase):
                 get_code(service_catalogue['work-out'], code_hash, access_token)
 
 
-# service_catalogue_url = "https://vc-diss.appspot.com/servicecatalogue"
-service_catalogue_url = "http://localhost:8080/servicecatalogue"
+service_catalogue_url = "https://vc-diss.appspot.com/servicecatalogue"
+# service_catalogue_url = "http://localhost:8080/servicecatalogue"
 
 service_catalogue = json.loads(urllib2.urlopen(service_catalogue_url).read())
 
