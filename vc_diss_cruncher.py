@@ -151,7 +151,7 @@ def main():
     else:
 
         print_with_details('Getting vc-diss service catalogue from the server.')
-        service_catalogue_url="https://vc-diss.appspot.com/servicecatalogue"
+        service_catalogue_url="https://vc-diss.appspot.com/servicecatalogue" #localhost-able if necessary
 
         service_catalogue = json.loads(urllib2.urlopen(service_catalogue_url).read())
 
@@ -187,7 +187,7 @@ def main():
                     if result is not None:
                         print_with_details('Successfully crunched input. Posting back to server...')
                         post_result(service_catalogue['results-in'], input_value, result, access_token)
-                        print_with_details('Posted result for input. Another successful crunch!')
+                        print_with_details('Posted result (' + str(result).strip() + ') for input (' + str(input_value) + ') . Another successful crunch!')
                     else:
                         print_with_details('Error loading result of crunching. Will try with new input...')
 
@@ -212,6 +212,9 @@ def main():
 
             except urllib2.URLError as err:
                 print_with_details('URL ERROR' + str(err.reason))
+
+            except KeyboardInterrupt:
+                sys.exit()
 
 
 if __name__ == "__main__":
